@@ -1,0 +1,43 @@
+<div class="container pt-5">
+  <div class="row justify-content-center pt-5">
+    <div class="col-md-auto">
+      <div class="text-center display-3 font-weight-normal">STOCK SEARCH</div>
+    </div>
+  </div>
+  <div class="row justify-content-center pt-5">
+    <div class="col-auto">
+      <form
+        class="form-container"
+        [formGroup]="searchForm"
+        (ngSubmit)="onSubmit(searchBar.value)"
+      >
+        <div class="search-container p-1 px-3 col-xs-2">
+          <div class="input-group">
+            <input
+              formControlName="userInput"
+              #searchBar
+              type="text"
+              class="border-0"
+              placeholder="Enter stock name"
+              [matAutocomplete]="auto"
+              aria-label="Stock ticker name"
+              aria-describedby="basic-addon2"
+            />
+          </div>
+
+          <mat-autocomplete #auto="matAutocomplete">
+            <ng-container>
+              @for (stock of filteredOptions; track stock) {
+              <mat-option [value]="stock.tickerSymbol">
+                <span>{{ stock.tickerSymbol }}</span>
+                <span> | {{ stock.name }}</span>
+              </mat-option>
+              }
+            </ng-container>
+          </mat-autocomplete>
+        </div>
+      </form>
+    </div>
+  </div>
+  <app-stock-details [stockTicker]="selectedStock"></app-stock-details>
+</div>

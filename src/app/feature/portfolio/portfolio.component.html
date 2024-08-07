@@ -1,0 +1,129 @@
+<div>
+  <div class="container">
+    <div class="row px-4 px-sm-0">
+      <div class="col mt-4">
+        <h1>My Portfolio</h1>
+      </div>
+    </div>
+    @if(isPortfolioEmpty){
+    <div class="row px-4 px-sm-0">
+      <div class="col text-center alert alert-warning" role="alert">
+        Currently you don't have any stock
+      </div>
+    </div>
+    } @else{ @if(isLoading){
+    <div class="is-loading spinner" layout="row" layout-align="center center">
+      <mat-spinner mode="indeterminate" diameter="60"></mat-spinner>
+    </div>
+    } @else{
+    <ng-container>
+      <div class="row px-4 px-sm-0">
+        <div class="col mt-4">
+          <h3>Investments</h3>
+        </div>
+      </div>
+      <div class="container mt-3">
+        <div class="row align-items-center">
+          <div class="col">
+            <strong>Name of the person</strong>
+          </div>
+          <div class="col align-end">
+            {{ portfolioData.firstName }} {{ portfolioData.lastName }}
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col">
+            <strong>Account Number</strong>
+          </div>
+          <div class="col align-end">
+            <span>{{ portfolioData.accountNumber }}</span>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col">
+            <strong>Account Currency</strong>
+          </div>
+          <div class="col align-end text-right">
+            {{ portfolioData.currency }}
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col">
+            <strong>Value Potfolio</strong>
+          </div>
+          <div class="col align-end text-right">
+            {{ portfolioData.balance + portfolioData.investments | currency }}
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col">
+            <strong>Investments</strong>
+          </div>
+          <div class="col align-end text-right">
+            {{ portfolioData.investments | currency }}
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col">
+            <strong>Cash</strong>
+          </div>
+          <div class="col align-end text-right">
+            {{ portfolioData.balance | currency }}
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="row px-4 px-sm-0">
+        <div class="col mt-4">
+          <h3>Transaction History</h3>
+        </div>
+      </div>
+      @for (item of portfolioData.stocks; track item) {
+      <div class="row">
+        <div class="col">
+          <div class="card mb-3">
+            <div class="card-header">
+              <span> {{ item.name }} </span>
+              <strong> {{ item.tickerSymbol }} </strong> |
+              <strong> {{ item.exchangeName }} </strong> |
+              <strong> {{ item.instrumentType }} </strong>
+              <span class="badge bg-secondary"> {{ item.status }} </span>
+            </div>
+            <div class="card-body portfolio-font">
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <div class="row">
+                    <div class="col">Name:</div>
+                    <div class="col align-end">
+                      {{ item.name }}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">Unit:</div>
+                    <div class="col align-end">
+                      {{ item.unit }}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">Price:</div>
+                    <div class="col align-end">
+                      {{ item.price | currency }}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">Transaction Date:</div>
+                    <div class="col align-end">
+                      {{ item.transactionDate | date }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+    </ng-container>
+    } }
+  </div>
+</div>

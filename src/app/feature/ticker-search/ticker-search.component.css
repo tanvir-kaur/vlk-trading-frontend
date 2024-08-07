@@ -1,0 +1,14 @@
+
+
+.form-container input:focus{
+    outline: none;
+}
+
+.search-container {
+    border:2px solid cadetblue;
+    border-radius: 20px;
+}
+
+.search-container button i{
+    color: cadetblue;
+}

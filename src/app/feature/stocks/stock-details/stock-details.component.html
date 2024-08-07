@@ -1,0 +1,45 @@
+@if(stockDetails){
+<div>
+  <div class="container mt-3">
+    <div class="row h3 my-0 py-0 align-items-center">
+      <div class="col">
+        {{ stockDetails.tickerSymbol }}
+      </div>
+      <div class="col align-end">
+        {{ stockDetails.price | currency }}
+      </div>
+    </div>
+    <div class="row h5 my-0 py-0 text-muted align-items-center">
+      <div class="col">
+        {{ stockDetails.name }}
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col">
+        {{ stockDetails.exchangeCode }}
+      </div>
+      <div class="col align-end">
+        {{ stockDetails.lastTradeDateTime | date : "y-MM-dd HH:mm:ss" : "PST" }}
+      </div>
+    </div>
+    <div class="row h5 my-0 py-0 text-muted align-items-center">
+      <div class="col">
+        <button mat-flat-button (click)="buyStock()">Buy</button>
+      </div>
+    </div>
+    <div class="row pt-2">
+      <div class="col text-center">
+        @if(stockDetails.isMarketOpen){
+        <div>
+          <span class="market-open"> Market is Open </span>
+        </div>
+        } @else{
+        <ng-template>
+          <span class="market-closed">Market is Closed</span>
+        </ng-template>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+}
