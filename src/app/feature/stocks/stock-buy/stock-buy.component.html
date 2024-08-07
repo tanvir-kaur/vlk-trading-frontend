@@ -1,0 +1,137 @@
+@if(stockDetails && portfolioDetails){
+<div>
+  <div class="container mt-3">
+    <div class="row pt-2">
+      <div class="col text-center">
+        @if(stockDetails.isMarketOpen){
+        <div>
+          <span class="market-open"> Market is Open </span>
+        </div>
+        } @else{
+        <ng-template>
+          <span class="market-closed">Market is Closed</span>
+        </ng-template>
+        }
+      </div>
+    </div>
+    <div class="row h3 my-0 py-0 align-items-center">
+      <div class="col">
+        {{ stockDetails.tickerSymbol }}
+      </div>
+      <div class="col align-end">
+        {{ stockDetails.price | currency }}
+      </div>
+    </div>
+    <div class="row h5 my-0 py-0 text-muted align-items-center">
+      <div class="col">
+        {{ stockDetails.name }}
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col">
+        {{ stockDetails.exchangeCode }}
+      </div>
+      <div class="col align-end">
+        {{ stockDetails.exchangeName }}
+      </div>
+    </div>
+    <div class="row h5 my-0 py-0 text-muted align-items-center">
+      <div class="col">
+        {{ stockDetails.instrumentType }}
+      </div>
+      <div class="col align-end">
+        {{ stockDetails.lastTradeDateTime | date : "y-MM-dd HH:mm:ss" : "PST" }}
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="container mt-3">
+    <div class="row align-items-center">
+      <div class="col">
+        <strong>Name of the person</strong>
+      </div>
+      <div class="col align-end">
+        {{ portfolioDetails.firstName }} {{ portfolioDetails.lastName }}
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col">
+        <strong>Settlement Account</strong>
+      </div>
+      <div class="col align-end">
+        <span>{{ portfolioDetails.accountNumber }}</span>
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col">
+        <strong>Account Balance</strong>
+      </div>
+      <div class="col align-end">
+        {{ portfolioDetails.balance | currency }}
+      </div>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col">
+      <strong>Commission Rate</strong>
+    </div>
+    <div class="col align-end">
+      <span>{{ portfolioDetails.commissionRate }}%</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="container mt-3">
+      <div class="container mt-3">
+        <div class="row align-items-center">
+          <div class="col">
+            <strong>Term</strong>
+          </div>
+          <div class="col align-end">
+            <mat-radio-group aria-label="Select an option">
+              <mat-radio-button value="1" checked="true"
+                >Day order</mat-radio-button
+              >
+              <mat-radio-button value="2">Date</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-items-center">
+        <div class="col">
+          <strong>Quantity</strong>
+        </div>
+        <div class="col align-end">
+          <input
+            matInput
+            [(ngModel)]="orderUnits"
+            (ngModelChange)="calculateTotalAmount()"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-3">
+      <div class="container mt-3">
+        <div class="row align-items-center">
+          <div class="col">
+            <strong>Total Order</strong>
+          </div>
+          <div class="col align-end">
+            {{ totalAmount | currency }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-3">
+      <div class="row align-items-center">
+        <div class="col">
+          <button mat-flat-button (click)="confirmOrder()">
+            Confirm Order
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}

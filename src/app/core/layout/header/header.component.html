@@ -1,0 +1,9 @@
+@if(isLoggedIn$ | async){
+<mat-toolbar color="primary">
+  <span> Van Lanschot Kempen Trading App </span>
+  <span class="fill-remaining-space"></span>
+  <button mat-button routerLink="/portfolio">Portfolio</button>
+  <button mat-button routerLink="/search">Search</button>
+  <button mat-button (click)="onLogout()">Logout</button>
+</mat-toolbar>
+}
