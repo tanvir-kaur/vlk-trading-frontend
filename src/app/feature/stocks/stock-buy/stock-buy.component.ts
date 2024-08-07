@@ -1,10 +1,10 @@
-import { Component, DestroyRef, OnDestroy, OnInit } from '@angular/core';
-import { StocksService } from '../../services/stocks.service';
+import { Component, DestroyRef, OnInit } from '@angular/core';
+import { StocksService } from '../stocks.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stock } from '../../../models/Stock';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
-import { PortfolioService } from '../../services/portfolio.service';
+import { PortfolioService } from '../../portfolio/portfolio.service';
 import { Portfolio } from '../../../models/Portfolio';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';

@@ -1,15 +1,9 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
-import { StocksService } from '../../services/stocks.service';
-import { Stock } from '../../../models/Stock';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
+import { Stock } from '../../../models/Stock';
+import { StocksService } from '../stocks.service';
 
 @Component({
   selector: 'app-stock-details',
@@ -36,6 +30,6 @@ export class StockDetailsComponent implements OnChanges {
   }
 
   buyStock() {
-   this.router.navigate(['/stock/' + this.stockTicker + '/buy']);
+    this.router.navigate(['/stock/' + this.stockTicker + '/buy']);
   }
 }

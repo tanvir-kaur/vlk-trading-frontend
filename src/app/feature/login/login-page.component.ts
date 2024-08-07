@@ -8,9 +8,9 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
-import { AuthService } from '../../../core/auth/auth.service';
+import { AuthService } from '../../core/auth/auth.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Login } from '../../../models/LoginRequest';
+import { Login } from '../../models/LoginRequest';
 
 @Component({
   selector: 'app-login-page',

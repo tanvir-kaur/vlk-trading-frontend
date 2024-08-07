@@ -1,20 +1,11 @@
 import { Component } from '@angular/core';
-import { Stock } from '../../../models/Stock';
+import { Stock } from '../../models/Stock';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
-import {
-  debounceTime,
-  finalize,
-  map,
-  Observable,
-  startWith,
-  switchMap,
-  tap,
-} from 'rxjs';
-import { StocksService } from '../../services/stocks.service';
+import { map, startWith } from 'rxjs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { StockDetailsComponent } from '../stock-details/stock-details.component';
+import { StockDetailsComponent } from '../stocks/stock-details/stock-details.component';
+import { StocksService } from '../stocks/stocks.service';
 
 @Component({
   selector: 'app-ticker-search',
@@ -23,7 +14,7 @@ import { StockDetailsComponent } from '../stock-details/stock-details.component'
     MatAutocompleteModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
-    StockDetailsComponent
+    StockDetailsComponent,
   ],
   templateUrl: './ticker-search.component.html',
   styleUrl: './ticker-search.component.css',
@@ -34,10 +25,7 @@ export class TickerSearchComponent {
   filteredOptions: Stock[];
   selectedStock: string;
 
-  constructor(
-    private fb: FormBuilder,
-    private stockService: StocksService,
-  ) {}
+  constructor(private fb: FormBuilder, private stockService: StocksService) {}
 
   ngOnInit() {
     this.searchForm = this.fb.group({

@@ -1,6 +1,6 @@
 import { Component, DestroyRef, OnInit } from '@angular/core';
-import { Portfolio } from '../../../models/Portfolio';
-import { PortfolioService } from '../../services/portfolio.service';
+import { Portfolio } from '../../models/Portfolio';
+import { PortfolioService } from './portfolio.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';

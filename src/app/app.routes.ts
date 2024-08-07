@@ -6,14 +6,14 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () =>
-      import('./feature/components/login/login-page.component').then(
+      import('./feature/login/login-page.component').then(
         (mod) => mod.LoginPageComponent
       ),
   },
   {
     path: 'portfolio',
     loadComponent: () =>
-      import('./feature/components/portfolio/portfolio.component').then(
+      import('./feature/portfolio/portfolio.component').then(
         (mod) => mod.PortfolioComponent
       ),
     canActivate: [authGuard],
@@ -21,7 +21,7 @@ export const routes: Routes = [
   {
     path: 'search',
     loadComponent: () =>
-      import('./feature/components/ticker-search/ticker-search.component').then(
+      import('./feature/ticker-search/ticker-search.component').then(
         (mod) => mod.TickerSearchComponent
       ),
     canActivate: [authGuard],
@@ -29,7 +29,7 @@ export const routes: Routes = [
   {
     path: 'stock/:name/buy',
     loadComponent: () =>
-      import('./feature/components/stock-buy/stock-buy.component').then(
+      import('./feature/stocks/stock-buy/stock-buy.component').then(
         (mod) => mod.StockBuyComponent
       ),
     canActivate: [authGuard],
